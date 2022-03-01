@@ -1,5 +1,6 @@
 "use strict"
 
+let tempPeople = data;
 
 //Menu functions.
 //Used for the overall flow of the application.
@@ -84,8 +85,34 @@ function searchByName(people){
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
+  let chosenEyeColor = promptFor("Please type an eye color.", autoValid);
 
+  let foundEyeColor = people.filter(function(potentialMatch){
+    if(potentialMatch.eyeColor === chosenEyeColor){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+
+  return foundEyeColor;
 }
+
+tempPeople = searchByEyeColor(tempPeople)
+if (tempPeople.length > 1){
+  displayPeople(tempPeople)
+} 
+else{
+  displayPerson(tempPeople[0])
+}
+
+// assign data to a temp variable
+// ask user to select criteria to use
+// use a switch case to filter data or compound if else 
+// repeat until 5 criteria or user is done
+// display results
+// use conditional for correct function call
 
 //TODO: add other trait filter functions here.
 
