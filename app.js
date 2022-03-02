@@ -101,6 +101,18 @@ function searchByEyeColor(people){
 
 }
 
+function searchByGender(people){
+
+}
+
+function searchByHeight(people){
+
+}
+
+function searchByWeight(people){
+
+}
+
 // assign data to a temp variable
 // ask user to select criteria to use
 // use a switch case to filter data or compound if else 
