@@ -100,7 +100,7 @@ function searchByTraits(people){
       searchResults = searchByHeight(people)
       break;
     case "weight":
-      searchResults = searchByWeight
+      searchResults = searchByWeight(people)
       break;
     default:
       return searchByTraits(people);
