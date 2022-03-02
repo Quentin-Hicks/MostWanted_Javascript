@@ -1,6 +1,5 @@
 "use strict"
 
-let tempPeople = data;
 
 //Menu functions.
 //Used for the overall flow of the application.
@@ -16,7 +15,7 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      searchResults = searchByEyeColor(people); // TODO: search by traits
+      // TODO: search by traits
       break;
       default:
     app(people); // restart app
@@ -80,16 +79,12 @@ function searchByName(people){
     }
   })
   // TODO: find the person single person object using the name they entered.
-  return foundPerson[0];
+  return foundPerson;
 }
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
-<<<<<<< HEAD
   let chosenEyeColor = promptFor("Please type an eye color.", autoValid);
-=======
-  let chosenEyeColor = promptFor("What is the person's eyecolor?", autoValid);
->>>>>>> 00043f2e6fa333f585abf081ee2084c845af5440
 
   let foundEyeColor = people.filter(function(potentialMatch){
     if(potentialMatch.eyeColor === chosenEyeColor){
@@ -98,15 +93,12 @@ function searchByEyeColor(people){
     else{
       return false;
     }
-<<<<<<< HEAD
   });
 
-=======
-  })
->>>>>>> 00043f2e6fa333f585abf081ee2084c845af5440
   return foundEyeColor;
 }
 
+let tempPeople = data
 tempPeople = searchByEyeColor(tempPeople)
 if (tempPeople.length > 1){
   displayPeople(tempPeople)
