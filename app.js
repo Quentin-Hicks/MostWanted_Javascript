@@ -96,8 +96,15 @@ function searchByTraits(people){
     case "gender":
       searchResults = searchByGender(people)
       break;
+    case "height":
+      searchResults = searchByHeight(people)
+      break;
+    case "weight":
+      searchResults = searchByWeight
+      break;
+    default:
+      return searchByTraits(people);
   }
-
 
   return searchResults;
 }
