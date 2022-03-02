@@ -16,6 +16,7 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
+      searchResults = searchByTraits(people);
       break;
       default:
     app(people); // restart app
@@ -82,6 +83,26 @@ function searchByName(people){
   return foundPerson;
 }
 
+
+function searchByTraits(people){
+
+  let traitCriteria = promptFor("Type a trait. Search by eye color, gender...", autoValid)
+
+  switch(traitCriteria){
+    
+    case "eye color":
+      searchResults = searchByEyeColor(people)
+      break;
+    case "gender":
+      searchResults = searchByGender(people)
+      break;
+  }
+
+
+  return searchResults;
+}
+
+
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
   let chosenEyeColor = promptFor("Please type an eye color.", autoValid);
@@ -102,6 +123,20 @@ function searchByEyeColor(people){
 }
 
 function searchByGender(people){
+  let chosenGender = promptFor("Please type a gender.", autoValid);
+
+  let foundGender = people.filter(function(potentialMatch){
+    if(potentialMatch.gender === chosenGender){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+
+  let genderSearchResult = displayPeople(foundGender)
+
+  return genderSearchResult;
 
 }
 
