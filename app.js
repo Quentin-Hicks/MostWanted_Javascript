@@ -37,11 +37,13 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + 
+  " . Do you want to know their 'info', 'family', or 'descendants'?\nType the option you want or 'restart' or 'quit'", autoValid);
 
   switch(displayOption){
     case "info":
-    // TODO: get person's info
+      // TODO: get person's info
+      displayPerson(person);
     break;
     case "family":
     // TODO: get person's family
@@ -80,7 +82,7 @@ function searchByName(people){
     }
   })
   // TODO: find the person single person object using the name they entered.
-  return foundPerson;
+  return foundPerson[0];
 }
 
 
@@ -148,10 +150,38 @@ function searchByGender(people){
 }
 
 function searchByHeight(people){
+  let chosenHeight = parseInt(promptFor("Please type a height.", autoValid));
+
+  let foundHeight = people.filter(function(potentialMatch){
+    if(potentialMatch.height === chosenHeight){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+
+  let heightSearchResult = displayPeople(foundHeight)
+
+  return heightSearchResult;
 
 }
 
 function searchByWeight(people){
+  let chosenWeight = parseInt(promptFor("Please type weight.", autoValid));
+
+  let foundWeight = people.filter(function(potentialMatch){
+    if(potentialMatch.weight === chosenWeight){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+
+  let weightSearchResult = displayPeople(foundWeight)
+
+  return weightSearchResult;
 
 }
 
@@ -181,11 +211,20 @@ function displayPeople(people){
 }
 
 function displayPerson(person){
+  // TODO: finish getting the rest of the information to display.
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
-  // TODO: finish getting the rest of the information to display.
+  personInfo += "gender: " + person.gender + "\n";
+  personInfo += "dob: " + person.dob + "\n";
+  personInfo += "height: " + person.height + "\n";
+  personInfo += "weight: " + person.weight + "\n";
+  personInfo += "eyeColor: " + person.eyeColor + "\n";
+  personInfo += "occupation: " + person.occupation + "\n";
+  personInfo += "currentSpouse: " + person.currentSpouse + "\n";
+  personInfo += "parents: " + person.parents + "\n";
+  personInfo += "id: " + person.id + "\n";
   alert(personInfo);
 }
 
