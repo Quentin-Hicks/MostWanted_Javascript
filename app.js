@@ -95,16 +95,10 @@ function searchByEyeColor(people){
     }
   });
 
-  return foundEyeColor;
-}
+  let eyeColorSearchResult = displayPeople(foundEyeColor)
 
-let tempPeople = data
-tempPeople = searchByEyeColor(tempPeople)
-if (tempPeople.length > 1){
-  displayPeople(tempPeople)
-} 
-else{
-  displayPerson(tempPeople[0])
+  return eyeColorSearchResult;
+
 }
 
 // assign data to a temp variable
