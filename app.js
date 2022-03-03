@@ -38,26 +38,27 @@ function mainMenu(person, people){
   }
 
   let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + 
-  " . Do you want to know their 'info', 'family', or 'descendants'?\nType the option you want or 'restart' or 'quit'", autoValid);
+  " . Do you want to know their 'info', 'family', or 'd' (for descendants)?\nType the option you want or 'restart' or 'quit'", autoValid);
 
   switch(displayOption){
     case "info":
       // TODO: get person's info
       displayPerson(person);
-    break;
+      break;
     case "family":
-    // TODO: get person's family
-    break;
-    case "descendants":
-    // TODO: get person's descendants
-    break;
+      // TODO: get person's family
+      break;
+    case "d":
+      // TODO: get person's descendants
+      displayDescendants(person)
+      break;
     case "restart":
-    app(people); // restart
-    break;
+      app(people); // restart
+      break;
     case "quit":
-    return; // stop execution
+      return; // stop execution
     default:
-    return mainMenu(person, people); // ask again
+      return mainMenu(person, people); // ask again
   }
 }
 
@@ -238,6 +239,26 @@ function displayPerson(person){
   personInfo += "parents: " + person.parents + "\n";
   personInfo += "id: " + person.id + "\n";
   alert(personInfo);
+}
+
+
+function displayDescendants(person){
+
+  let descendant = data
+
+  let foundDescendants = descendant.filter(function(potentialMatch){
+    if(potentialMatch.parents === person.id){
+      return true
+    }
+    else{
+      return false
+    }
+  })
+
+  alert(foundDescendants.length)
+
+  return foundDescendants;
+
 }
 
 //#endregion
