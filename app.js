@@ -89,10 +89,11 @@ function searchByName(people){
 function searchByTraits(people){
 
   let listOfPeople = people
-  let traitCriteria = promptFor("Type a trait. Search by eyecolor, gender, height, weight.", autoValid)
   let continueSearch = true
 
   while(continueSearch != false){
+
+    let traitCriteria = promptFor("What would you like to search for?\n\nEyecolor, Gender, Height, Weight", autoValid)
 
     switch(traitCriteria){
       
@@ -115,16 +116,9 @@ function searchByTraits(people){
       default:
         return searchByTraits(people);
     }
-    
-    
-    //displayPeople(listOfPeople)
 
     let user = promptFor("Would you like to search for more traits, yes or no?", autoValid)
-    if(user === 'yes'){
-      traitCriteria = ' '
-      traitCriteria = promptFor("Type a trait. Search by eyecolor, gender, height, weight.", autoValid)
-    }
-    else if(user === 'no'){
+    if(user === 'no'){
       continueSearch = false
     }
 
