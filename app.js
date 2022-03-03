@@ -88,27 +88,49 @@ function searchByName(people){
 
 function searchByTraits(people){
 
-  let traitCriteria = promptFor("Type a trait. Search by eye color, gender...", autoValid)
+  let listOfPeople = people
+  let traitCriteria = promptFor("Type a trait. Search by eyecolor, gender, height, weight.", autoValid)
+  let continueSearch = true
 
-  switch(traitCriteria){
+  while(continueSearch != false){
+
+    switch(traitCriteria){
+      
+      case "eyecolor":
+        listOfPeople = searchByEyeColor(listOfPeople)
+        displayPeople(listOfPeople)
+        break;
+      case "gender":
+        listOfPeople = searchByGender(listOfPeople)
+        displayPeople(listOfPeople)
+        break;
+      case "height":
+        listOfPeople = searchByHeight(listOfPeople)
+        displayPeople(listOfPeople)
+        break;
+      case "weight":
+        listOfPeople = searchByWeight(listOfPeople)
+        displayPeople(listOfPeople)
+        break;
+      default:
+        return searchByTraits(people);
+    }
     
-    case "eye color":
-      searchResults = searchByEyeColor(people)
-      break;
-    case "gender":
-      searchResults = searchByGender(people)
-      break;
-    case "height":
-      searchResults = searchByHeight(people)
-      break;
-    case "weight":
-      searchResults = searchByWeight(people)
-      break;
-    default:
-      return searchByTraits(people);
+    
+    //displayPeople(listOfPeople)
+
+    let user = promptFor("Would you like to search for more traits, yes or no?", autoValid)
+    if(user === 'yes'){
+      traitCriteria = ' '
+      traitCriteria = promptFor("Type a trait. Search by eyecolor, gender, height, weight.", autoValid)
+    }
+    else if(user === 'no'){
+      continueSearch = false
+    }
+
   }
 
-  return searchResults;
+  app(people) //restart app
 }
 
 
@@ -125,9 +147,8 @@ function searchByEyeColor(people){
     }
   });
 
-  let eyeColorSearchResult = displayPeople(foundEyeColor)
 
-  return eyeColorSearchResult;
+  return foundEyeColor;
 
 }
 
@@ -143,9 +164,8 @@ function searchByGender(people){
     }
   });
 
-  let genderSearchResult = displayPeople(foundGender)
 
-  return genderSearchResult;
+  return foundGender;
 
 }
 
@@ -161,9 +181,7 @@ function searchByHeight(people){
     }
   });
 
-  let heightSearchResult = displayPeople(foundHeight)
-
-  return heightSearchResult;
+  return foundHeight;
 
 }
 
@@ -179,9 +197,9 @@ function searchByWeight(people){
     }
   });
 
-  let weightSearchResult = displayPeople(foundWeight)
+  
 
-  return weightSearchResult;
+  return foundWeight;
 
 }
 
